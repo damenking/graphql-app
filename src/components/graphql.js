@@ -46,22 +46,49 @@ export default class GraphQLMessage extends React.PureComponent {
     },
   }
 
+  renderEach() {
+    const { data } = this.props;
+    return (
+      data.allMessages.map(each => {
+        console.log(each);
+        const message = each.message && each.message.text;
+        const isLoading = each.loading ? 'yes' : 'nope';
+        return (
+          <div>
+            <h2>!!!!!Message from GraphQL server: <em>{message}</em></h2>
+            <h2>!!!!!!Currently loading?: {isLoading}</h2>
+          </div>
+        );
+      })
+    );
+  }
   render() {
     const { data } = this.props;
-
+    console.log(this.props);
+    console.log(data);
+    console.log(data.allMessages);
     // Since we're dealing with async GraphQL data, we defend against the
     // data not yet being loaded by checking to see that we have the `message`
     // key on our returned object
     const message = data.message && data.message.text;
-
     // Apollo will tell us whether we're still loading.  We can also use this
     // check to ensure we have a fully returned response
-    const isLoading = data.loading ? 'yes' : 'nope';
-    return (
-      <div>
-        <h2>Message from GraphQL server: <em>{message}</em></h2>
-        <h2>Currently loading?: {isLoading}</h2>
-      </div>
-    );
+    const isLoading = data.loading ? true : false;
+    if (isLoading) {
+      return (
+        <div>
+          <h2>Message from GraphQL server: <em>{message}</em></h2>
+          <h2>Currently loading?: {isLoading}</h2>
+        </div>
+      );
+    }
+    console.log('hello')
+    return this.renderEach();
+    // return (
+    //   <div>
+    //     <h2>Message from GraphQL server: <em>{message}</em></h2>
+    //     <h2>Currently loading?: {isLoading}</h2>
+    //   </div>
+    // );
   }
 }

@@ -51,7 +51,8 @@ config.addReducer('counter', counterReducer, { count: 0 });
 // 2.  On the client, it will append the correct server URL so that we can
 // call the ReactQL host properly, and let the server handle our requests
 // config.enableGraphQLServer();
-config.enableGraphQLServer('https://api.graphcms.com/simple/v1/cjii8e16ub3l80181notynsy6');
+// Using graphCMS as graphQL backend
+config.setGraphQLEndpoint('https://api.graphcms.com/simple/v1/cjii8e16ub3l80181notynsy6');
 
 
 /* SERVER */
