@@ -59,7 +59,7 @@ export default class GraphQLMessage extends React.PureComponent {
   }
   render() {
     const { data } = this.props;
-    const isLoading = data.loading ? true : false;
+    const isLoading = !!data.loading;
     if (isLoading) {
       return (
         <div>
