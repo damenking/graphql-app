@@ -22,12 +22,6 @@ import { graphql } from 'react-apollo';
 // query to components using the @graphql decorator
 import allMessages from 'src/graphql/queries/all_messages.gql';
 
-// ----------------------
-
-// Since this component needs to 'listen' to GraphQL data, we wrap it in
-// `react-apollo`'s `graphql` HOC/decorator and pass in the query that this
-// component requires. Note: This is not to be confused with the `graphql`
-// lib, which is used on the server-side to initially define the schema
 @graphql(allMessages)
 export default class GraphQLMessage extends React.PureComponent {
   static propTypes = {
@@ -51,7 +45,8 @@ export default class GraphQLMessage extends React.PureComponent {
     return (
       data.allMessages.map(each => {
         console.log(each);
-        const message = each.message && each.message.text;
+        const message = each.text;
+        console.log(message);
         const isLoading = each.loading ? 'yes' : 'nope';
         return (
           <div>
@@ -64,31 +59,14 @@ export default class GraphQLMessage extends React.PureComponent {
   }
   render() {
     const { data } = this.props;
-    console.log(this.props);
-    console.log(data);
-    console.log(data.allMessages);
-    // Since we're dealing with async GraphQL data, we defend against the
-    // data not yet being loaded by checking to see that we have the `message`
-    // key on our returned object
-    const message = data.message && data.message.text;
-    // Apollo will tell us whether we're still loading.  We can also use this
-    // check to ensure we have a fully returned response
     const isLoading = data.loading ? true : false;
     if (isLoading) {
       return (
         <div>
-          <h2>Message from GraphQL server: <em>{message}</em></h2>
-          <h2>Currently loading?: {isLoading}</h2>
+          <h2>Loading data...</h2>
         </div>
       );
     }
-    console.log('hello')
     return this.renderEach();
-    // return (
-    //   <div>
-    //     <h2>Message from GraphQL server: <em>{message}</em></h2>
-    //     <h2>Currently loading?: {isLoading}</h2>
-    //   </div>
-    // );
   }
 }
