@@ -8,6 +8,7 @@ class Common {
     this.reducers = new Map();
 
     // Apollo (middle|after)ware
+    // Declaring in apollo.js instead...
     this.apolloMiddleware = [];
     this.apolloAfterware = [];
     this.apolloNetworkOptions = {};

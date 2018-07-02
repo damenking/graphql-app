@@ -32,7 +32,21 @@ export function getNetworkInterface(uri, opt) {
   });
 
   // Attach middleware
-  networkInterface.use(config.apolloMiddleware.map(f => ({ applyMiddleware: f })));
+  // Cannot get authorization middleware to work when pulling from
+  // middleware declaration in config...
+  networkInterface.use(
+    [{
+      applyMiddleware(req, next) {
+        const authToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA0OTYzNzcsImNsaWVudElkIjoiY2l2Z29zNmNqMDE5MjAxODRucDAxZGRkMiIsInByb2plY3RJZCI6ImNqaWk4ZTE2dWIzbDgwMTgxbm90eW5zeTYiLCJwZXJtYW5lbnRBdXRoVG9rZW5JZCI6ImNqajNtMHl3MzVzbXIwMTcwY2k0NnpldDQifQ.Q_yTh9VxVr70IwesPc4I7KLTAJdI4h4lSVp5FmEm9Eg';
+        if (!req.options.headers) {
+          req.options.headers = {}; // Create the header object if needed.
+        }
+        req.options.headers.authorization = `Bearer ${authToken}`;
+        next();
+      },
+    }],
+  );
+  // networkInterface.use(config.apolloMiddleware.map(f => ({ applyMiddleware: f })));
   networkInterface.useAfter(config.apolloAfterware.map(f => ({ applyAfterware: f })));
 
   return networkInterface;

@@ -1,0 +1,18 @@
+query home_page {
+  HomePage(
+    identifier: "1"
+  ) {
+    title
+    subtitle
+    richtext
+    markdown
+    banner {
+      url
+    }
+    images {
+      fileName
+      url
+    }
+  }
+}
+  

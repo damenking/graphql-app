@@ -7,9 +7,9 @@ html {
   border: 0;
   font-family: 'Gentium Basic', serif;
   font-size: 16px;
+}
+/* setup font cluser classes at different rems and have h1,h2 etc classes
+using em that can be wrapped */
+h1 {
 
-  /* We can nest rules, thanks to cssnext */
-  li {
-    font-size: 2rem;
-  }
 }

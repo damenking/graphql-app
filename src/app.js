@@ -12,7 +12,9 @@
 
 // ----------------------
 // IMPORTS
-
+// Non fatal error compiling css with webpack... fatal error compiling
+// scss with webpack...
+import 'bootstrap/dist/css/bootstrap.min.global.css';
 /* ReactQL */
 
 // Config API, for adding reducers and configuring our ReactQL app
