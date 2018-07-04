@@ -37,7 +37,7 @@ export function getNetworkInterface(uri, opt) {
   networkInterface.use(
     [{
       applyMiddleware(req, next) {
-        const authToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA0OTYzNzcsImNsaWVudElkIjoiY2l2Z29zNmNqMDE5MjAxODRucDAxZGRkMiIsInByb2plY3RJZCI6ImNqaWk4ZTE2dWIzbDgwMTgxbm90eW5zeTYiLCJwZXJtYW5lbnRBdXRoVG9rZW5JZCI6ImNqajNtMHl3MzVzbXIwMTcwY2k0NnpldDQifQ.Q_yTh9VxVr70IwesPc4I7KLTAJdI4h4lSVp5FmEm9Eg';
+        const authToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXJzaW9uIjoxLCJ0b2tlbklkIjoiYzY5ODRjMjEtNzJhMC00YzI1LTgzODAtODg4NDkxYTQ5NGFlIn0.qyFES8pRUEKNSj26x2_BC3Av5b5NQnsg8WM92J2OFno';
         if (!req.options.headers) {
           req.options.headers = {}; // Create the header object if needed.
         }

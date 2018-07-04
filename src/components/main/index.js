@@ -19,13 +19,13 @@ import Contact from 'components/main/contact/contact';
 
 
 // import { Home, Page, WhenNotFound } from 'components/routes';
-import Navbar from 'components/main/site/navbar';
 
 export default () => (
   <div>
     <Helmet>
       <title>React CMS site</title>
       <meta name="description" content="React CMS site" />
+      <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css" />
     </Helmet>
     {/* <Navbar /> */}
     <Switch>

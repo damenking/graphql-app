@@ -16,9 +16,14 @@ const Section1 = props => (
   <Self className="container">
     <ContentRow className="row align-items-center">
       <div className="col-4">
-        <img src={props.images[0].url} className="img-fluid" alt="" />
+        <img src={props.backgroundUrl} className="img-fluid" alt="" />
       </div>
-      <div className="col-8" dangerouslySetInnerHTML={{ __html: props.text }} />
+      <div className="col-8">
+        <h1>{props.header}</h1>
+        <h2>{props.subheader}</h2>
+        <p>{props.text}</p>
+      </div>
+      {/* <div className="col-8" dangerouslySetInnerHTML={{ __html: props.text }} /> */}
     </ContentRow>
   </Self>
 );

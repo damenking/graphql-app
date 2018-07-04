@@ -1,15 +1,24 @@
 query home_page {
-  HomePage(
-    identifier: "1"
-  ) {
+  homePage(where: {
+    id: "cjj6i30tffkiq09140r1w4uy8"
+  }) {
+    id
     title
     subtitle
-    richtext
-    markdown
-    banner {
+    bannerImage {
+      fileName
       url
     }
-    images {
+    section1Image {
+      fileName
+      url
+    }
+    section1Header
+    section1Subheader
+    section1Text
+    sectionHeader
+    sectionSubheader
+    sectionImage {
       fileName
       url
     }
